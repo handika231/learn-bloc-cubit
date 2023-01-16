@@ -30,14 +30,22 @@ class HomeView extends StatelessWidget {
             const Text(
               'You have pushed the button this many times:',
             ),
-            BlocBuilder<CounterCubit, CounterState>(
-              builder: (context, state) {
+            const SizedBox(
+              height: 12,
+            ),
+            Builder(
+              builder: (context) {
+                final state = context.watch<CounterCubit>().state;
                 return Text(
                   '${state.counter}',
                   style: Theme.of(context).textTheme.headline4,
                 );
               },
             ),
+            const SizedBox(
+              height: 12,
+            ),
+            Text('${context.watch<CounterCubit>().state.counter}'),
           ],
         ),
       ),
